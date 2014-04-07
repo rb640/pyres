@@ -1,0 +1,15 @@
+﻿{% extends "base.html" %}
+
+{% block title %}NetCom{% endblock %}
+{% block header %}Список готовых отчетов{% endblock %}
+
+{% block content %} 
+<ol>
+{% for file in xml_files_ext %}
+<li><a href=/report_view/?file={{ file }}>{{ file }}</a></li>
+
+{% endfor %}
+</ol>
+<a href="/create_report/"> Создать отчет >></a>
+{% endblock %}
+

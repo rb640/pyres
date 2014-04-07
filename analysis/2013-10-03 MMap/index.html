@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Price of Weed</title>
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic|Open+Sans:400italic,700italic,400,700);
+
+body {
+  font-family: Antenna;
+  font-size: 11px;
+  margin: 40px auto;
+  width: 960px;
+  min-height: 1200px;
+}
+
+footer {
+  margin-top: 20px;
+  line-height: 1.5em;
+}
+
+a {
+  color: #345D63;
+}
+
+#body {
+  position: relative;
+}
+
+h1 {
+  font-size: 18px;
+  margin-top: .3em;
+  margin-bottom: 10px;
+}
+
+
+#body > p {
+  line-height: 1.5em;
+  text-rendering: optimizeLegibility;
+}
+
+#charts {
+  padding: 10px 0;
+}
+
+.filter-wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.filter-button {
+  height:38px;
+  overflow:hidden;
+  font-size: 11px;
+  list-style-type:none;
+  text-align: center;
+}
+
+.filter-button li {
+  line-height:30px;
+  float:left;
+  margin-right:-1px;
+  border:1px solid #ddd;
+
+}
+
+.filter-button li:last-child {
+  margin-right:0
+}
+
+.filter-button li:active {
+  border:1px solid #ccc;
+  -moz-box-shadow:0 0 11px #ddd inset;
+  -webkit-box-shadow:0 0 11px #ddd inset;
+  box-shadow:0 0 11px #ddd inset;
+}
+
+.filter-button a {
+  padding:7px 12px;
+  text-decoration:none;
+  color:#000
+}
+.filter-button a:active {
+  color: #DD5426;
+}
+
+.chart {
+  height: 111px;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.title {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.reset {
+  padding-left: 1em;
+  font-size: smaller;
+  color: #ccc;
+  font-weight: normal;
+}
+
+.background.bar {
+  fill: #ccc;
+}
+
+.foreground.bar {
+  fill: #345D63;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+  font-family: Antenna;
+}
+
+.brush rect.extent {
+  fill: #345D63;
+  fill-opacity: .125;
+}
+
+.brush .resize path {
+  fill: #eee;
+  stroke: #666;
+}
+
+#quality-chart {
+  width: 130px;
+}
+
+#ppo-chart {
+  width: 674px;
+}
+
+#amount-chart {
+  width: 150px;
+}
+
+#date-chart {
+  width: 960px;
+}
+
+#map-chart {
+  height: 500px;
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.5em;
+}
+
+#sale-list {
+  min-height: 100px;
+}
+
+#sale-list .sale {
+  line-height: 1.5em;
+  background: #eee;
+  width: 960px;
+  margin-bottom: 1px;
+}
+
+#sale-list .sale div {
+  display: inline-block;
+  width: 130px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-align: right;
+}
+
+#sale-list .day {
+  margin-bottom: 1px;
+}
+
+#sale-list div.time {
+  color: #999;
+  text-align: left;
+}
+
+#sale-list div.location {
+  width: 340px;
+  text-align: left;
+}
+
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+.q0-9 { fill:#EEF5D7; }
+.q1-9 { fill:#DDEAAF; }
+.q2-9 { fill:#CCE087; }
+.q3-9 { fill:#BBd55F; }
+.q4-9 { fill:#AACB37; }
+.q5-9 { fill:#88A22C; }
+.q6-9 { fill:#667A21; }
+.q7-9 { fill:#445516; }
+.q8-9 { fill:#22290B; }
+
+.q0-9:hover { fill:#DD5426; }
+.q1-9:hover { fill:#DD5426; }
+.q2-9:hover { fill:#DD5426; }
+.q3-9:hover { fill:#DD5426; }
+.q4-9:hover { fill:#DD5426; }
+.q5-9:hover { fill:#DD5426; }
+.q6-9:hover { fill:#DD5426; }
+.q7-9:hover { fill:#DD5426; }
+.q8-9:hover { fill:#DD5426; }
+
+.d3-tip {
+  line-height: 1.5;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 0px;
+  text-align: center;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+
+</style>
+
+<div id="body">
+  <h1>Mapping Marijuana Sales</h1>
+  <p style="margin-bottom: 20px;">
+    Click the boxes or drag over bar charts to filter the dataset. The map below updates to show average prices by state for that selection. Darker shades represent higher prices. 
+  </br><em><a href="http://blog.modeanalytics.com/post/63008618017/mapping-the-price-of-weed-an-interactive-visualization">Read more</a></em></p>
+  <div class="filter-wrapper">
+    <ul class="filter-button" id= "toggle">
+      <li id="f1" class="bn">
+        <a href="javascript:filter([null, null, null, [new Date(2012,6,0), new Date(2012,9,10)]])">July-Oct. 2012</a> vs.
+        <a href="javascript:filter([null, null, null, [new Date(2013,6,0), new Date(2013,9,0)]])">July-Oct. 2013</a>
+      </li>
+      <li id="f2" class="bn">
+        <a href="javascript:filter([null, [.8,1], null, null])">Large purchases</a> vs.
+        <a href="javascript:filter([null, [0,.2], null, null])">Small purchases</a>
+      <li id="f3" class="bn">
+        <a href="javascript:filter([[0.5,1.5], null, null, null])">Low quality</a> vs.
+        <a href="javascript:filter([[2.5,3.5], null, null, null])">High quality</a>
+      </li>
+      <li id="ra" class="bn"><a style="font-weight: bold;" href="javascript:filter([null, null, null, null])">Reset All</a></li>
+    </ul>
+  </div>
+  <div id="charts">  
+    <div id="quality-chart" class="chart">
+      <div class="title">Quality</div>
+    </div>
+    <div id="amount-chart" class="chart">
+      <div class="title">Amount (oz.)</div>
+    </div>
+    <div id="ppo-chart" class="chart">
+      <div class="title">Price per Ounce</div>
+    </div>
+    <div id="date-chart" class="chart">
+      <div class="title" >Date of Sale</div>
+    </div>
+    <div id="map-chart" class="chart"></div>
+  </div>
+
+  <div id="lists">
+    <div class="title" >Recent Transactions</div>
+    <div id="sale-list" class="list"></div>
+  </div>
+</div>
+<footer>
+  <p><strong>Notes</strong>: To prevent outliers from skewing results, sales are capped at $1,000 per ounce. No data was collected from Sept. 30 - Oct 2, 2012, during an apparent site outage.
+  </p>
+  <p>
+    Data from <a href="http://www.priceofweed.com">PriceOfWeed.com</a>. Visualization built with <a href="http://d3js.org/">D3</a> and <a href="http://square.github.io/crossfilter/">Crossfilter</a>.
+  </p>
+</footer>
+<script src="crossfilter.v1.min.js"></script>
+<script src="d3.v3.min.js"></script>
+<script src="d3.tip.min.js"></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+
+<script>
+
+d3.csv("m_prices.csv", function(error, sales) {  
+d3.csv("state_codes.csv", function(error, codes) { 
+  // Various formatters.
+  var formatNumber = d3.format(",d"),
+      formatChange = d3.format("+,d"),
+      formatDate = d3.time.format("%B %d, %Y"),
+      formatTime = d3.time.format("%I:%M %p");
+
+  var nestByDate = d3.nest()
+      .key(function(d) { return d3.time.day(d.date); });
+      
+  sales.forEach(function(d, i) {
+    d.index = i;
+    d.date = parseDate(d.date);
+    d.ppo = +d.ppo;
+    d.amount = +d.amount;
+    d.quality_score = d.quality_score -.3
+  });
+
+  var sale = crossfilter(sales),
+      all = sale.groupAll(),
+      date = sale.dimension(function(d) { return d.date; }),
+      dates = date.group(d3.time.week),
+      qual = sale.dimension(function(d) { return d.quality_score; }),
+      quals = qual.group(function(d) {return d} ),
+      ppo = sale.dimension(function(d) { return Math.min(d.ppo,590); }),
+      ppos = ppo.group(function(d) { return Math.round(Math.floor(d/10))*10; }),
+      price = sale.dimension(function(d) { return Math.min(d.price,395); }),
+      prices = price.group(function(d) { return Math.round(Math.floor(d/5))*5; }),      
+      amount = sale.dimension(function(d) { return Math.min(d.amount,.99); }),
+      amounts = amount.group(function(d) { return Math.floor(d*10)/10; }),
+      state = sale.dimension(function(d) { return d.state_code; }),
+      states = state.group(),
+      statesCount = states.reduceCount(),
+      ppoSum = state.group().reduceSum(function(d) { return Math.min(d.ppo,1000); }),
+      totalSum = sale.groupAll().reduceSum(function(d) { return Math.min(d.ppo,1000  );});
+      
+  var charts = [
+
+    barChart(20,3)
+        .dimension(qual)
+        .group(quals)
+        .round(function(qual) {return Math.round(qual)-.5;})
+      .x(d3.scale.linear()
+        .domain([0.5,3.5])
+        .rangeRound([0, 10 * 9])),
+        
+    barChart(9,2)
+        .dimension(amount)
+        .group(amounts)
+      .x(d3.scale.linear()
+        .domain([0, 1])
+        .rangeRound([0, 10 * 10])),
+
+    barChart(9)
+        .dimension(ppo)
+        .group(ppos)
+      .x(d3.scale.linear()
+        .domain([0, 600])
+        .rangeRound([0, 10 * 60])),
+
+    barChart(7)
+        .dimension(date)
+        .group(dates)
+      .x(d3.time.scale()
+        .domain([new Date(2012, 0, 1), new Date(2013, 9, 5 )])
+        .rangeRound([0, 8 * 105]))
+        .filter([new Date(2013, 0, 1), new Date(2013, 4, 1)]),
+        
+    stateMap()
+  
+  ];
+
+  var chart = d3.selectAll(".chart")
+      .data(charts)
+      .each(function(chart) { chart.on("brush", renderAll).on("brushend", renderAll); });
+
+  var list = d3.selectAll(".list")
+      .data([saleList]);
+
+  d3.selectAll("#total")
+      .text(formatNumber(sale.size()));
+
+  function render(method) {
+    d3.select(this).call(method);
+  }
+
+  function renderAll() {
+    chart.each(render);
+    list.each(render);
+
+  }
+  
+  function parseDate(d) {
+    return new Date(
+        d.substring(0,4),
+        d.substring(4, 6) - 1,
+        d.substring(6, 8),
+        d.substring(8, 10),
+        d.substring(10, 12));
+  }
+
+  window.filter = function(filters) {
+    filters.forEach(function(d, i) { charts[i].filter(d); });
+    renderAll();
+  };
+
+  window.reset = function(i) {
+    charts[i].filter(null);
+    renderAll();
+  };
+  
+  function saleList(div) {
+    var salesByDate = nestByDate.entries(date.top(10));
+    
+    div.each(function() {
+      var date = d3.select(this).selectAll("div")
+            .data(salesByDate, function(d) { return d.key; });
+            
+      var header = date.enter().append("div")
+              .attr("class", "date")
+          
+      date.exit().remove();
+
+      var sale = date.order().selectAll(".sale")
+          .data(function(d) { return d.values; }, function(d) { return d.index; });
+
+      var saleEnter = sale.enter().append("div")
+          .attr("class", "sale");
+
+      saleEnter.append("div")
+          .attr("class", "time")
+          .text(function(d) { return formatDate(d.date); });
+
+      saleEnter.append("div")
+          .attr("class", "location")
+          .text(function(d) { return d.location; });
+
+      saleEnter.append("div")
+          .attr("class", "quality")
+          .text(function(d) { return d.quality; });
+
+      saleEnter.append("div")
+          .attr("class", "amount")
+          .text(function(d) { return Math.round(d.amount*100,1)/100 + " ounces"; });
+
+      saleEnter.append("div")
+          .attr("class", "ppo")
+          .text(function(d) { return "$" + Math.round(d.ppo) + " per ounce"; });
+
+      sale.exit().remove();
+
+      sale.order();
+    });
+  }
+
+  function barChart(barWidth,ticks) {
+    if (!barChart.id) barChart.id = 0;
+
+    var margin = {top: 10, right: 20, bottom: 20, left: 20},
+        x,
+        y = d3.scale.linear().range([60, 0]),
+        id = barChart.id++,
+        axis = d3.svg.axis().orient("bottom").ticks(ticks),
+        brush = d3.svg.brush(),
+        brushDirty,
+        dimension,
+        group,
+        round;
+
+    function chart(div) {
+      var width = x.range()[1],
+          height = y.range()[0];
+
+      y.domain([0, group.top(1)[0].value]);
+
+      div.each(function() {
+        var div = d3.select(this),
+            g = div.select("g");
+
+        if (g.empty()) {
+          div.select(".title").append("a")
+              .attr("href", "javascript:reset(" + id + ")")
+              .attr("class", "reset")
+              .text("reset")
+              .style("display", "none");
+
+          g = div.append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          g.append("clipPath")
+              .attr("id", "clip-" + id)
+            .append("rect")
+              .attr("width", width)
+              .attr("height", height);
+
+          g.selectAll(".bar")
+              .data(["background", "foreground"])
+            .enter().append("path")
+              .attr("class", function(d) { return d + " bar"; })
+              .datum(group.all())
+              .attr("width",20);
+
+          g.selectAll(".foreground.bar")
+              .attr("clip-path", "url(#clip-" + id + ")");
+
+          g.append("g")
+              .attr("class", "axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(axis);
+
+          var gBrush = g.append("g").attr("class", "brush").call(brush);
+          gBrush.selectAll("rect").attr("height", height);
+          gBrush.selectAll(".resize").append("path").attr("d", resizePath);
+        }
+
+        if (brushDirty) {
+          brushDirty = false;
+          g.selectAll(".brush").call(brush);
+          div.select(".title a").style("display", brush.empty() ? "none" : null);
+          if (brush.empty()) {
+            g.selectAll("#clip-" + id + " rect")
+                .attr("x", 0)
+                .attr("width", width);
+          } else {
+            var extent = brush.extent();
+            g.selectAll("#clip-" + id + " rect")
+                .attr("x", x(extent[0]))
+                .attr("width", x(extent[1]) - x(extent[0]));
+          }
+        }
+
+        g.selectAll(".bar").attr("d", barPath);
+      });
+
+      function barPath(groups) {
+        var path = [],
+            i = -1,
+            n = groups.length,
+            d;
+        while (++i < n) {
+          d = groups[i];
+          path.push("M", x(d.key), ",", height, "V", y(d.value), "h" + barWidth + "V", height);
+        }
+        return path.join("");
+      }
+
+      function resizePath(d) {
+        var e = +(d == "e"),
+            x = e ? 1 : -1,
+            y = height / 3;
+        return "M" + (.5 * x) + "," + y
+            + "A6,6 0 0 " + e + " " + (6.5 * x) + "," + (y + 6)
+            + "V" + (2 * y - 6)
+            + "A6,6 0 0 " + e + " " + (.5 * x) + "," + (2 * y)
+            + "Z"
+            + "M" + (2.5 * x) + "," + (y + 8)
+            + "V" + (2 * y - 8)
+            + "M" + (4.5 * x) + "," + (y + 8)
+            + "V" + (2 * y - 8);
+      }
+    }
+
+    brush.on("brushstart.chart", function() {
+      var div = d3.select(this.parentNode.parentNode.parentNode);
+      div.select(".title a").style("display", null);
+    });
+
+    brush.on("brush.chart", function() {
+      var g = d3.select(this.parentNode),
+          extent = brush.extent();
+      if (round) g.select(".brush")
+          .call(brush.extent(extent = extent.map(round)))
+        .selectAll(".resize")
+          .style("display", null);
+      g.select("#clip-" + id + " rect")
+          .attr("x", x(extent[0]))
+          .attr("width", x(extent[1]) - x(extent[0]));
+      dimension.filterRange(extent);
+    });
+
+    brush.on("brushend.chart", function() {
+      if (brush.empty()) {
+        var div = d3.select(this.parentNode.parentNode.parentNode);
+        div.select(".title a").style("display", "none");
+        div.select("#clip-" + id + " rect").attr("x", null).attr("width", "100%");
+        dimension.filterAll();
+      }
+    });
+
+    chart.margin = function(_) {
+      if (!arguments.length) return margin;
+      margin = _;
+      return chart;
+    };
+
+    chart.x = function(_) {
+      if (!arguments.length) return x;
+      x = _;
+      axis.scale(x);
+      brush.x(x);
+      return chart;
+    };
+
+    chart.y = function(_) {
+      if (!arguments.length) return y;
+      y = _;
+      return chart;
+    };
+
+    chart.dimension = function(_) {
+      if (!arguments.length) return dimension;
+      dimension = _;
+      return chart;
+    };
+
+    chart.filter = function(_) {
+      if (_) {
+        brush.extent(_);
+        dimension.filterRange(_);
+      } else {
+        brush.clear();
+        dimension.filterAll();
+      }
+      brushDirty = true;
+      return chart;
+    };
+
+    chart.group = function(_) {
+      if (!arguments.length) return group;
+      group = _;
+      return chart;
+    };
+
+    chart.round = function(_) {
+      if (!arguments.length) return round;
+      round = _;
+      return chart;
+    };
+
+    return d3.rebind(chart, brush, "on");
+  }
+
+  function stateMap() {
+
+    var mapLoad = queue()
+        .defer(d3.json, "us.json")
+    
+    function aMap(div) {
+      
+      div.each(function() {
+        var div = d3.select(this),
+            g = div.select("g");
+        
+        if (g.empty()) {
+
+          var width = 960,
+              height = 500;
+          
+          var svg = div.append("svg")
+              .attr("width", width)
+              .attr("height", height);
+              
+          var path = d3.geo.path();
+          
+          mapLoad.await(ready)
+          
+          function ready(error, us) {
+            svg.append("g")
+                .attr("class", "states")
+                .selectAll("path")
+                .data(topojson.feature(us, us.objects.states).features)
+              .enter().append("path")
+                .attr("id",us.objects.states)
+                .attr("class", "q5-9")
+                .attr("d", path);
+            
+            svg.append("text")
+              .attr("x","600")
+              .attr("y","40")
+              .attr("id","all")
+              .attr("style","font-style:italic;")
+              .text("Total transactions: -")
+          
+            svg.append("text")
+                .attr("x","600")
+                .attr("y","55")
+                .attr("id","avg")
+                .attr("style","font-style:italic;")
+                .text("Average price: -")
+          
+          };
+
+        }
+          
+        var svg = div.select("svg")
+        
+        var allSaleAvg = formatNumber(Math.round(totalSum.value()/all.value()));
+        var allSales = formatNumber(all.value());
+        
+        var arr = []
+        max_val = 0;
+        min_val = 1000;
+        
+        var ppoAvg = statesCount.all().forEach( function(d, i) { 
+          var sums = ppoSum.all()
+          
+          obj = {};
+          obj.key = d.key;
+          
+          obj.value = (sums[i].value/Math.max(d.value,1));
+          
+          if (obj.value > max_val) {
+            max_val = obj.value
+          }
+          
+          if (obj.value < min_val) {
+            min_val = obj.value
+          }
+          
+          arr.push(obj);
+        });
+        
+        var highState = Math.min(max_val,600);
+        var lowState = min_val;
+        
+        var tip = d3.tip()
+          .attr('class', 'd3-tip')
+          .offset([-10, 0])
+          .html(function(d) {
+            return nameById.get(+d.id) + "</br>Sales: " + countById.get(+d.id) + "</br>Price per ounce: $" + Math.round(rateById.get(+d.id));
+          })
+          .direction('n')
+        
+        var rateById = d3.map();
+        var countById = d3.map();
+        var nameById = d3.map();
+        
+        arr.forEach(function(state) { rateById.set(+state.key,+state.value); })
+        statesCount.all().forEach(function(state) { countById.set(+state.key,+state.value)})
+        codes.forEach(function(state) { nameById.set(+state.key,state.value)})
+        
+        var quantize = d3.scale.quantize()
+            .domain([lowState, highState])
+            .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
+        
+        svg.call(tip);
+        
+        var s = svg.select("g")
+                  .selectAll("path")
+                  .attr("id",function(d) {return +d.id; })
+                  .attr("class", function(d) { return quantize(rateById.get(+d.id)); })
+                  .on('mouseover', tip.show)
+                  .on('mouseout', tip.hide);
+       
+        var t = d3.select("#all")
+                    .text("Total transactions: " + allSales)
+        
+        var p = svg.select("#avg")
+                    .text("Average price: $" + allSaleAvg)
+       
+      });
+    };
+    
+    return d3.rebind(aMap, d3.svg.brush(), "on");
+  
+  };
+  renderAll();
+});  
+});
+</script>

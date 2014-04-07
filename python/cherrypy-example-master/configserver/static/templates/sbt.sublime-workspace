@@ -1,0 +1,222 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ca",
+				"clafn	class_from_name()"
+			],
+			[
+				"ron",
+				"ronbarnard"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/Ruby/Ruby.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Snippet: ",
+				"Snippet: #!/usr/bin/env"
+			],
+			[
+				"Snippet: Lo",
+				"Snippet: Lorem ipsum"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/RONPC5/Desktop/redistest.py",
+		"/C/Users/RONPC5/Desktop/fat.c",
+		"/C/Users/RONPC5/Desktop/Redis/redis.conf",
+		"/C/Users/RONPC5/Desktop/Redis/libhiredis.dll",
+		"/C/Users/RONPC5/Desktop/9bf04f25-1bbb-4aea-a1f9-3d83c13d4cf4.dmp",
+		"/C/Users/RONPC5/Desktop/cherrypy-example-master/configserver/static/templates/index.html",
+		"/C/Users/RONPC5/Desktop/cherrypy-example-master/configserver/static/templates/base.html",
+		"/C/Users/RONPC5/Desktop/cherrypy-example-master/configserver/static/templates/iniconfig.html",
+		"/C/Users/RONPC5/Desktop/cherrypy-example-master/configserver/static/templates/iniconfig_edit.html",
+		"/C/Users/RONPC5/Desktop/cherrypy-example-master/configserver/static/templates/logs.html",
+		"/C/Users/RONPC5/Desktop/ajax/media/index.html",
+		"/C/Users/RONPC5/Desktop/analysis/2014-01-30-founder-experience/API_scripts/get_all_financial_orgs.py",
+		"/C/Users/RONPC5/Desktop/analysis/2014-01-30-founder-experience/API_scripts/script_people.py",
+		"/C/Users/RONPC5/Desktop/SemanticHealthDemo-master/service.py",
+		"/C/Users/RONPC5/Desktop/python-games-master/catanimation.py",
+		"/C/Users/RONPC5/Desktop/py_zipfile/write_files_to_zip/write_files_to_zip.py",
+		"/C/Users/RONPC5/Desktop/SemanticHealthDemo-master/visits.json",
+		"/C/Users/RONPC5/Desktop/xlrd/cell_types.py",
+		"/C/Users/RONPC5/Desktop/Python/apitest.py",
+		"/C/Users/RONPC5/Desktop/Python/backcrawler.py",
+		"/C/Users/RONPC5/Desktop/xlutils/display.py",
+		"/C/Users/RONPC5/Desktop/Book/This is a Story about Love",
+		"/C/Users/RONPC5/Desktop/-Blog Post Ideas",
+		"/C/Users/RONPC5/Desktop/My sentance would have wourds in it.",
+		"/C/Users/RONPC5/Desktop/Records Office.txt",
+		"/C/Python27/Tools/Scripts/mailerdaemon.py",
+		"/C/Users/RONPC5/Desktop/chart.py",
+		"/C/Users/RONPC5/Desktop/blog-master/2013-09-27 SNAP/us-congress-113_d.json",
+		"/C/Users/RONPC5/Desktop/blog-master/2013-09-03 Syria/ConflictQueries.sql",
+		"/C/Users/RONPC5/Desktop/spreadsheets/Analyst",
+		"/C/Users/RONPC5/Desktop/dv/Account_Data.php",
+		"/C/Users/RONPC5/Desktop/dv/monthly_payments.html",
+		"/C/Users/RONPC5/Desktop/dv/Thumbs.db",
+		"/C/Users/RONPC5/Desktop/test.py",
+		"/F/setup/autorun.inf",
+		"/F/solution4/sas/access/sasmacro/bwaccess.sas",
+		"/C/Users/RONPC5/Desktop/amazon.py",
+		"/C/Users/RONPC5/Desktop/reddit.ps",
+		"/C/Users/RONPC5/Desktop/backcrawler.py",
+		"/C/Users/RONPC5/Desktop/cstest.rb",
+		"/C/Users/RONPC5/Desktop/popdel.py",
+		"/C/Users/RONPC5/Desktop/get_mails_gmail.rb",
+		"/C/Users/RONPC5/Desktop/setup.py",
+		"/C/Users/RONPC5/Desktop/pytest.py",
+		"/C/Users/RONPC5/Desktop/SlashDotTicker.py",
+		"/C/Users/RONPC5/Desktop/vbscriptemail.vbs",
+		"/C/RailsInstaller/Git/Git Bash.vbs",
+		"/C/Users/RONPC5/Desktop/Get_Gmail_Attach.py",
+		"/C/Users/RONPC5/Desktop/spreadsheets/yEdhPeQ.jpg",
+		"/C/Users/RONPC5/Desktop/spreadsheets/usda_national_nutrients.sql",
+		"/C/Users/RONPC5/Desktop/redmine-master/db/migrate/006_calendar_and_activity.rb",
+		"/C/Users/RONPC5/Desktop/redmine-master/lib/tasks/email.rake",
+		"/C/Users/RONPC5/Desktop/redmine-master/db/migrate/003_issue_add_note.rb",
+		"/C/Users/RONPC5/Desktop/redmine-master/app/models/repository/git.rb",
+		"/C/Users/RONPC5/Desktop/redmine-master/lib/redmine.rb",
+		"/C/Users/RONPC5/Desktop/SimpleCMS/_class/simpleCMS.php",
+		"/C/Users/RONPC5/Desktop/SimpleCMS/display.php",
+		"/C/Users/RONPC5/Desktop/SimpleCMS/.DS_Store",
+		"/C/Users/RONPC5/Desktop/SimpleCMS/style.css",
+		"/C/Users/RONPC5/Desktop/symbols_strings.rb",
+		"/C/Users/RONPC5/Desktop/beautifulsoup4-4.1.0/setup.py",
+		"/C/Users/RONPC5/Desktop/beautifulsoup4-4.1.0/README.txt",
+		"/C/Users/RONPC5/Desktop/string2.py",
+		"/E/CarryOver/MAPI Backup/wab.exe",
+		"/C/Python27/Scripts/easy_install-2.7-script.py",
+		"/C/Users/RONPC5/Desktop/This is a Story about Love",
+		"/C/Users/RONPC5/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/RONPC5/AppData/Roaming/Sublime Text 2/Packages/User/Plain text.sublime-settings"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"."
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"."
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 130.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

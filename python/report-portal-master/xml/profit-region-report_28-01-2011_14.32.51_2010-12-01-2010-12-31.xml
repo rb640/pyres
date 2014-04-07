@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RESULTS>
+  <ROW>
+    <COLUMN NAME="Регион">г.Бишкек</COLUMN>
+    <COLUMN NAME="Количество клиентов">237</COLUMN>
+    <COLUMN NAME="Начислено">20236.85014</COLUMN>
+    <COLUMN NAME="Оплачено в $">24028.98763</COLUMN>
+    <COLUMN NAME="Оплачено в сом">18000</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">обл.Ошская</COLUMN>
+    <COLUMN NAME="Количество клиентов">72</COLUMN>
+    <COLUMN NAME="Начислено">6345.52371</COLUMN>
+    <COLUMN NAME="Оплачено в $">6816.9208</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">Не работает</COLUMN>
+    <COLUMN NAME="Количество клиентов">31</COLUMN>
+    <COLUMN NAME="Начислено">318.26395</COLUMN>
+    <COLUMN NAME="Оплачено в $">637.14317</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">обл.Чуйская</COLUMN>
+    <COLUMN NAME="Количество клиентов">31</COLUMN>
+    <COLUMN NAME="Начислено">2282.42528</COLUMN>
+    <COLUMN NAME="Оплачено в $">2671.45561</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">обл.Джалал-Абадская</COLUMN>
+    <COLUMN NAME="Количество клиентов">7</COLUMN>
+    <COLUMN NAME="Начислено">229.4173</COLUMN>
+    <COLUMN NAME="Оплачено в $">213.96779</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">обл.Иссык-Кульская</COLUMN>
+    <COLUMN NAME="Количество клиентов">5</COLUMN>
+    <COLUMN NAME="Начислено">172.35634</COLUMN>
+    <COLUMN NAME="Оплачено в $">132.85715</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">г. Бишкек </COLUMN>
+    <COLUMN NAME="Количество клиентов">1</COLUMN>
+    <COLUMN NAME="Начислено">0</COLUMN>
+    <COLUMN NAME="Оплачено в $">0</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">обл.Таласская</COLUMN>
+    <COLUMN NAME="Количество клиентов">1</COLUMN>
+    <COLUMN NAME="Начислено">141.24166</COLUMN>
+    <COLUMN NAME="Оплачено в $">114.08929</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+  <ROW>
+    <COLUMN NAME="Регион">г. Бишкек ул</COLUMN>
+    <COLUMN NAME="Количество клиентов">1</COLUMN>
+    <COLUMN NAME="Начислено">0</COLUMN>
+    <COLUMN NAME="Оплачено в $">0</COLUMN>
+    <COLUMN NAME="Оплачено в сом">0</COLUMN>
+  </ROW>
+</RESULTS>

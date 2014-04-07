@@ -1,0 +1,28 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Отчет{% endblock %}
+{% block header %}Отчет{% endblock %}
+{% block content %}
+<table border="1">
+<tr>
+{% for row_name in table_values.0.names %}
+
+	<td>{{ row_name }}</td>
+
+{% endfor %}
+</tr>
+
+{% for rows in table_values %}
+<tr>
+{% for values in rows.values %}
+<td>{{ values }}</td>
+{% endfor %} 
+</tr>
+
+{% endfor %} 
+</table>
+<br>
+
+<a href="/ready_reports_list/"><< Вернуться к списку</a>
+
+{% endblock %}
